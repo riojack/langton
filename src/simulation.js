@@ -13,7 +13,7 @@ var FORWARD = { next: antDirection, dy: dy, dx: dx};
 var STAND_STILL = { next: antDirection, dy: 0, dx: 0};
 var TURN_AROUND = arguments[6][TURN_LEFT.next];
 var cell = grid[anty][antx];
-var NEXT_COLOR = String.fromCharCode(cell.charCodeAt(0) + 1));
+var NEXT_COLOR = String.fromCharCode(cell.charCodeAt(0) + 1);
 
 function colorCell(color) { grid[anty][antx] = color; }
 
@@ -67,7 +67,7 @@ function doSimulation(ctx, funct) {
 
 (function () {
   const SCALING = 0.5;
-  const canvas = document.createElement('canvas');
+  const canvas = document.getElementById('langtons-world');
   canvas.height = CANVAS_HEIGHT;
   canvas.width = CANVAS_WIDTH;
   canvas.style.width = `${canvas.width * SCALING * 4}px`;
@@ -76,34 +76,27 @@ function doSimulation(ctx, funct) {
   canvas.style.borderCollapse = 'black';
   canvas.style.borderStyle = 'dotted';
 
-  document.body.appendChild(canvas);
-
   const ctx = canvas.getContext('2d');
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
   ctx.imageSmoothingEnabled = false;
   ctx.webkitImageSmoothingEnabled = false;
 
-  const codeField = document.createElement('textarea');
-  codeField.rows = 30;
+  const codeField = document.getElementById('langtons-brain');
+  codeField.rows = 35;
   codeField.cols = 60;
   codeField.value = STARTING_BODY;
-  document.body.appendChild(codeField);
 
-  const goButton = document.createElement('button');
+  const goButton = document.getElementById('turn-on-langtons-brain');
   goButton.innerHTML = 'Go';
   goButton.onclick = () => {
-    const codeBody = document.getElementsByTagName('textarea')[0].value;
+    const codeBody = document.getElementById('langtons-brain').value;
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     doSimulation(ctx, new Function(PRELUDE + codeBody));
   };
 
-  document.body.appendChild(goButton);
-
-  const stopBtn = document.createElement('button');
+  const stopBtn = document.getElementById('turn-off-langtons-brain');
   stopBtn.innerHTML = 'Stop!';
   stopBtn.onclick = () => {
     clearInterval(simTimer);
   };
-
-  document.body.appendChild(stopBtn);
 })();

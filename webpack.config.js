@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/simulation.js',
   output: {
     path: resolve(__dirname, 'dist'),
@@ -11,6 +11,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      template: './template.html',
       inlineSource: '.(js|css)$',
       minify: { collapseWhitespace: true },
     }),
