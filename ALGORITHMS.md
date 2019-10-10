@@ -10,7 +10,7 @@ else if ('ABFJKL'.indexOf(cell) >= 0) {
 }
 else {
   colorCell('A');
-  return DO_NOTHING;
+  return STAND_STILL;
 }
 ```
 ### Self-filling Square
@@ -25,7 +25,7 @@ else if ('AGH'.indexOf(cell) >= 0) {
 }
 else {
   colorCell('A');
-  return DO_NOTHING;
+  return STAND_STILL;
 }
 ```
 ### Faint Rings
@@ -41,5 +41,35 @@ else if (cell === 'Z') {
 else {
   colorCell(NEXT_COLOR);
   return FORWARD;
+}
+```
+### Switch-back Highway
+```js
+if ('ABFHJK'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_LEFT;
+}
+else if ('CDEGIL'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_RIGHT;
+}
+else {
+  colorCell('A');
+  return STAND_STILL;
+}
+```
+### Symmetric Cardioid
+```js
+if ('AB'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_LEFT;
+}
+else if ('CD'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_RIGHT;
+}
+else {
+  colorCell('A');
+  return STAND_STILL;
 }
 ```
