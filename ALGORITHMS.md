@@ -1,11 +1,11 @@
+### Triangle Highway
 ```js
-// Triangle
 if ('CDEGHI'.indexOf(cell) >= 0) {
-  colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
+  colorCell(NEXT_COLOR);
   return TURN_LEFT;
 }
 else if ('ABFJKL'.indexOf(cell) >= 0) {
-  colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
+  colorCell(NEXT_COLOR);
   return TURN_RIGHT;
 }
 else {
@@ -13,15 +13,14 @@ else {
   return DO_NOTHING;
 }
 ```
-
+### Self-filling Square
 ```js
-// Self-filling square
 if ('BCDEFI'.indexOf(cell) >= 0) {
-  colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
+  colorCell(NEXT_COLOR);
   return TURN_LEFT;
 }
 else if ('AGH'.indexOf(cell) >= 0) {
-  colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
+  colorCell(NEXT_COLOR);
   return TURN_RIGHT;
 }
 else {
@@ -29,11 +28,10 @@ else {
   return DO_NOTHING;
 }
 ```
-
+### Faint Rings
 ```js
-// Faint rings
 if (cell === 'A') {
-  colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
+  colorCell(NEXT_COLOR);
   return TURN_LEFT;
 }
 else if (cell === 'Z') {
@@ -41,7 +39,7 @@ else if (cell === 'Z') {
   return TURN_RIGHT;
 }
 else {
-  colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
+  colorCell(NEXT_COLOR);
   return FORWARD;
 }
 ```
