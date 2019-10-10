@@ -40,6 +40,7 @@ function doSimulation(ctx, funct) {
 
   rasterizeOne(grid[antx][anty], antx, anty, ctx);
   clearInterval(simTimer);
+
   simTimer = ttt = setInterval(() => {
     let j = 0;
     while (j < speedUp) {

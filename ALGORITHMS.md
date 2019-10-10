@@ -1,5 +1,5 @@
 ```js
-// triangle
+// Triangle
 if ('CDEGHI'.indexOf(cell) >= 0) {
   colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
   return TURN_LEFT;
@@ -15,7 +15,7 @@ else {
 ```
 
 ```js
-// self-filling square
+// Self-filling square
 if ('BCDEFI'.indexOf(cell) >= 0) {
   colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
   return TURN_LEFT;
@@ -31,12 +31,12 @@ else {
 ```
 
 ```js
-// faint rings
-if ('A'.indexOf(cell) >= 0) {
+// Faint rings
+if (cell === 'A') {
   colorCell(String.fromCharCode(cell.charCodeAt(0) + 1));
   return TURN_LEFT;
 }
-else if ('Z'.indexOf(cell) >= 0) {
+else if (cell === 'Z') {
   colorCell('A');
   return TURN_RIGHT;
 }
