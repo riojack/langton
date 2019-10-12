@@ -18,12 +18,12 @@ function colorCell(color) { grid[anty][antx] = color; }
 
 `;
 
-const STARTING_BODY = `if (cell === 'B') {
-  colorCell('W');
+const STARTING_BODY = `if (cell === 'A') {
+  colorCell('B');
   return TURN_LEFT;
 }
 else {
-  colorCell('B');
+  colorCell('A');
   return TURN_RIGHT;
 }`;
 
@@ -65,7 +65,7 @@ function doSimulation(ctx, funct) {
 
 (function () {
   const SCALING = 0.5;
-  const canvas = document.createElement('canvas');
+  const canvas = document.getElementById('langtons-world');
   canvas.height = CANVAS_HEIGHT;
   canvas.width = CANVAS_WIDTH;
   canvas.style.width = `${canvas.width * SCALING * 4}px`;
@@ -74,34 +74,27 @@ function doSimulation(ctx, funct) {
   canvas.style.borderCollapse = 'black';
   canvas.style.borderStyle = 'dotted';
 
-  document.body.appendChild(canvas);
-
   const ctx = canvas.getContext('2d');
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
   ctx.imageSmoothingEnabled = false;
   ctx.webkitImageSmoothingEnabled = false;
 
-  const codeField = document.createElement('textarea');
-  codeField.rows = 30;
+  const codeField = document.getElementById('langtons-brain');
+  codeField.rows = 35;
   codeField.cols = 60;
   codeField.value = STARTING_BODY;
-  document.body.appendChild(codeField);
 
-  const goButton = document.createElement('button');
-  goButton.innerHTML = 'Go';
+  const goButton = document.getElementById('turn-on-langtons-brain');
   goButton.onclick = () => {
-    const codeBody = document.getElementsByTagName('textarea')[0].value;
+    const codeBody = document.getElementById('langtons-brain').value;
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     doSimulation(ctx, new Function(PRELUDE + codeBody));
   };
 
-  document.body.appendChild(goButton);
+  goButton.ontouchstart = goButton.onclick;
 
-  const stopBtn = document.createElement('button');
-  stopBtn.innerHTML = 'Stop!';
+  const stopBtn = document.getElementById('turn-off-langtons-brain');
   stopBtn.onclick = () => {
     clearInterval(simTimer);
   };
-
-  document.body.appendChild(stopBtn);
 })();
