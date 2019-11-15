@@ -1,5 +1,5 @@
-const CANVAS_WIDTH = 300;
-const CANVAS_HEIGHT = 300;
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 400;
 
 COLOR_CHAR_MAP = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').reduce((map, char) => {
   return {

@@ -56,10 +56,11 @@ function doSimulation(ctx, funct) {
 
       if (antx < 0 || antx >= CANVAS_WIDTH || anty < 0 || anty >= CANVAS_HEIGHT) {
         clearInterval(simTimer);
+        console.log(`x${antx} y${anty}`);
         return;
       }
 
-      rasterizeOne(grid[antx][anty], antx, anty, ctx);
+      rasterizeOne(grid[anty][antx], antx, anty, ctx);
       j++;
     }
   }, 1);
@@ -72,9 +73,6 @@ function doSimulation(ctx, funct) {
   canvas.width = CANVAS_WIDTH;
   canvas.style.width = `${canvas.width * SCALING * 4}px`;
   canvas.style.height = `${canvas.height * SCALING * 4}px`;
-  canvas.style.borderWidth = 1;
-  canvas.style.borderCollapse = 'black';
-  canvas.style.borderStyle = 'dotted';
 
   const ctx = canvas.getContext('2d');
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
@@ -87,6 +85,7 @@ function doSimulation(ctx, funct) {
   codeField.value = STARTING_BODY;
 
   const goButton = document.getElementById('turn-on-langtons-brain');
+  goButton.innerHTML = '&nbsp;';
   goButton.onclick = () => {
     const codeBody = document.getElementById('langtons-brain').value;
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -96,6 +95,7 @@ function doSimulation(ctx, funct) {
   goButton.ontouchstart = goButton.onclick;
 
   const stopBtn = document.getElementById('turn-off-langtons-brain');
+  stopBtn.innerHTML = '&nbsp;';
   stopBtn.onclick = () => {
     clearInterval(simTimer);
   };
