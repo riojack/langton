@@ -1,6 +1,6 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 module.exports = {
   mode: 'production',
@@ -11,7 +11,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './template.html',
+      title: 'Langton\'s Ant',
+      template: './src/template.html',
       inlineSource: '.(js|css)$',
       minify: { collapseWhitespace: true },
     }),
@@ -20,7 +21,6 @@ module.exports = {
   module: {
     rules: [{
       test: /\.(js)$/,
-      exclude: /node_modules/,
       use: {
         loader: 'babel-loader',
       },

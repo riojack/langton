@@ -19,12 +19,12 @@ function colorCell(color) { grid[anty][antx] = color; }
 
 `;
 
-const STARTING_BODY = `if (cell === 'B') {
-  colorCell('W');
+const STARTING_BODY = `if (cell === 'A') {
+  colorCell('B');
   return TURN_LEFT;
 }
 else {
-  colorCell('B');
+  colorCell('A');
   return TURN_RIGHT;
 }`;
 
@@ -87,15 +87,15 @@ function doSimulation(ctx, funct) {
   codeField.value = STARTING_BODY;
 
   const goButton = document.getElementById('turn-on-langtons-brain');
-  goButton.innerHTML = 'Go';
   goButton.onclick = () => {
     const codeBody = document.getElementById('langtons-brain').value;
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     doSimulation(ctx, new Function(PRELUDE + codeBody));
   };
 
+  goButton.ontouchstart = goButton.onclick;
+
   const stopBtn = document.getElementById('turn-off-langtons-brain');
-  stopBtn.innerHTML = 'Stop!';
   stopBtn.onclick = () => {
     clearInterval(simTimer);
   };
