@@ -56,10 +56,11 @@ function doSimulation(ctx, funct) {
 
       if (antx < 0 || antx >= CANVAS_WIDTH || anty < 0 || anty >= CANVAS_HEIGHT) {
         clearInterval(simTimer);
+        console.log(`x${antx} y${anty}`);
         return;
       }
 
-      rasterizeOne(grid[antx][anty], antx, anty, ctx);
+      rasterizeOne(grid[anty][antx], antx, anty, ctx);
       j++;
     }
   }, 1);
