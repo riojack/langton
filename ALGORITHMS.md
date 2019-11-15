@@ -73,3 +73,33 @@ else {
   return STAND_STILL;
 }
 ```
+### Triangles Everywhere!
+```js
+if ('ACD'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_LEFT;
+}
+else if ('BEFGHI'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_RIGHT;
+}
+else {
+  colorCell('A');
+  return STAND_STILL;
+}
+```
+### Throwing Star
+```js
+if ('CDEH'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_LEFT;
+}
+else if ('ABFG'.indexOf(cell) >= 0) {
+  colorCell(NEXT_COLOR);
+  return TURN_RIGHT;
+}
+else {
+  colorCell('A');
+  return STAND_STILL;
+}
+```
