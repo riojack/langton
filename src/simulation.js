@@ -1,4 +1,4 @@
-const { rasterizeOne, CANVAS_HEIGHT, CANVAS_WIDTH } = require('./rasterizer');
+const { rasterizeOne, CANVAS_HEIGHT, CANVAS_WIDTH, PIXEL_SCALE } = require('./rasterizer');
 const { beLikeAnAnt } = require('./logic');
 
 const PRELUDE = `var grid = arguments[0];
@@ -35,8 +35,8 @@ function doSimulation(ctx, funct) {
   let grid = (Array(CANVAS_HEIGHT).fill()).map((x) => Array(CANVAS_WIDTH).fill('A')),
     dx = 0,
     dy = 0,
-    antx = CANVAS_WIDTH / 2.0,
-    anty = CANVAS_HEIGHT / 2.0,
+    antx = (CANVAS_WIDTH / 4.0),
+    anty = (CANVAS_HEIGHT / 4.0),
     direction = 'SOUTH';
 
   rasterizeOne(grid[antx][anty], antx, anty, ctx);
@@ -71,8 +71,8 @@ function doSimulation(ctx, funct) {
   const canvas = document.getElementById('langtons-world');
   canvas.height = CANVAS_HEIGHT;
   canvas.width = CANVAS_WIDTH;
-  canvas.style.width = `${canvas.width * SCALING * 4}px`;
-  canvas.style.height = `${canvas.height * SCALING * 4}px`;
+  // canvas.style.width = `${canvas.width * SCALING * 4}px`;
+  // canvas.style.height = `${canvas.height * SCALING * 4}px`;
 
   const ctx = canvas.getContext('2d');
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
