@@ -1,4 +1,4 @@
-const { rasterizeOne, CANVAS_HEIGHT, CANVAS_WIDTH, PIXEL_SCALE } = require('./rasterizer');
+const { rasterizeOne, CANVAS_HEIGHT, CANVAS_WIDTH } = require('./rasterizer');
 const { beLikeAnAnt } = require('./logic');
 
 const PRELUDE = `var grid = arguments[0];
@@ -42,9 +42,9 @@ function doSimulation(ctx, funct) {
   rasterizeOne(grid[antx][anty], antx, anty, ctx);
   clearInterval(simTimer);
 
-  simTimer = ttt = setInterval(() => {
+  simTimer = setInterval(() => {
     let j = 0;
-    while (j < speedUp) {
+    while (j < batchSize) {
       const nextStage = beLikeAnAnt(grid, direction, dx, dy, antx, anty, funct);
 
       grid = nextStage.grid;
@@ -56,7 +56,6 @@ function doSimulation(ctx, funct) {
 
       if (antx < 0 || antx >= CANVAS_WIDTH || anty < 0 || anty >= CANVAS_HEIGHT) {
         clearInterval(simTimer);
-        console.log(`x${antx} y${anty}`);
         return;
       }
 
@@ -67,12 +66,9 @@ function doSimulation(ctx, funct) {
 }
 
 (function () {
-  const SCALING = 0.5;
   const canvas = document.getElementById('langtons-world');
   canvas.height = CANVAS_HEIGHT;
   canvas.width = CANVAS_WIDTH;
-  // canvas.style.width = `${canvas.width * SCALING * 4}px`;
-  // canvas.style.height = `${canvas.height * SCALING * 4}px`;
 
   const ctx = canvas.getContext('2d');
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
