@@ -27,8 +27,7 @@ function beLikeAnAnt(grid, antDirection, dx, dy, antx, anty, funct) {
     dy: nextPos.dy,
     antx: antx + nextPos.dx,
     anty: anty + nextPos.dy
-  }
-
+  };
 }
 
 module.exports = {

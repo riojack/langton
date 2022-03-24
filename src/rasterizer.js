@@ -14,7 +14,6 @@ COLOR_CHAR_MAP = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''
   }
 }, {});
 
-
 function rasterizeOne(cellColor, x, y, ctx) {
   const idata = ctx.createImageData(PIXEL_SCALE, PIXEL_SCALE);
 
