@@ -76,8 +76,10 @@ function doSimulation(ctx, funct) {
 
   const ctx = canvas.getContext('2d');
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  ctx.imageSmoothingEnabled = false;
+  ctx.mozImageSmoothingEnabled = false;
   ctx.webkitImageSmoothingEnabled = false;
+  ctx.msImageSmoothingEnabled = false;
+  ctx.imageSmoothingEnabled = false;
 
   const codeField = document.getElementById('langtons-brain');
   codeField.rows = 35;
