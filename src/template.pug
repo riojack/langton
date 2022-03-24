@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title #{htmlWebpackPlugin.options.title}
+  body
+    canvas(id="langtons-world")
+    div(class="controls-overlay")
+      textarea(id="langtons-brain", style="font-family: 'Consolas', monospace, 'Courier New', Courier")
+      button(id="turn-on-langtons-brain", type="button")
+      button(id="turn-off-langtons-brain", type="button")
+    each cssFile in htmlWebpackPlugin.files.css
+      style !{compilation.assets[cssFile.substr(htmlWebpackPlugin.files.publicPath.length)].source()}
+    each jsFile in htmlWebpackPlugin.files.js
+      script !{compilation.assets[jsFile.substr(htmlWebpackPlugin.files.publicPath.length)].source()}
