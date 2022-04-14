@@ -46,6 +46,7 @@ a.btn {
   color: white;
   font-variant: small-caps;
   text-align: center;
+  cursor: pointer;
 }
 
 #turn-on-langtons-brain:hover {
@@ -59,6 +60,7 @@ a.btn {
   color: white;
   font-variant: small-caps;
   text-align: center;
+  cursor: pointer;
 }
 
 #turn-off-langtons-brain:hover {
@@ -88,4 +90,8 @@ a.btn {
 #speed-slider {
   width: 94%;
   vertical-align: middle;
+}
+
+#speed-slider::-webkit-slider-thumb {
+  cursor: pointer;
 }

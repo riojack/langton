@@ -2,7 +2,7 @@ const { PRELUDE, STARTING_BODY, SOUTH } = require('./constants');
 const { rasterizeOne, CANVAS_HEIGHT, CANVAS_WIDTH } = require('./rasterizer');
 const { beLikeAnAnt } = require('./logic');
 
-let batchSize = 165;
+let batchSize = 160;
 let simTimer;
 function doSimulation(ctx, funct) {
   let grid = (Array(CANVAS_HEIGHT).fill()).map(() => Array(CANVAS_WIDTH).fill('A')),

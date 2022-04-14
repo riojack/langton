@@ -1,105 +1,105 @@
 ### Triangle Highway
 ```js
-if ('CDEGHI'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+if (cellIsOneOf(cell, 'CDEGHI')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
-else if ('ABFJKL'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+else if (cellIsOneOf(cell, 'ABFJKL')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_RIGHT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return STAND_STILL;
 }
 ```
 ### Self-filling Square
 ```js
-if ('BCDEFI'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+if (cellIsOneOf(cell, 'BCDEFI')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
-else if ('AGH'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+else if (cellIsOneOf(cell, 'AGH')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_RIGHT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return STAND_STILL;
 }
 ```
 ### Faint Rings
 ```js
 if (cell === 'A') {
-  colorCell(NEXT_COLOR);
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
 else if (cell === 'Z') {
-  colorCell('A');
+  flipToLetter('A');
   return TURN_RIGHT;
 }
 else {
-  colorCell(NEXT_COLOR);
+  flipToLetter(NEXT_LETTER);
   return FORWARD;
 }
 ```
 ### Switch-back Highway
 ```js
-if ('ABFHJK'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+if (cellIsOneOf(cell, 'ABFHJK')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
-else if ('CDEGIL'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+else if (cellIsOneOf(cell, 'CDEGIL')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_RIGHT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return STAND_STILL;
 }
 ```
 ### Symmetric Cardioid
 ```js
-if ('AB'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+if (cellIsOneOf(cell, 'AB')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
-else if ('CD'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+else if (cellIsOneOf(cell, 'CD')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_RIGHT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return STAND_STILL;
 }
 ```
 ### Triangles Everywhere!
 ```js
-if ('ACD'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+if (cellIsOneOf(cell, 'ACD')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
-else if ('BEFGHI'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+else if (cellIsOneOf(cell, 'BEFGHI')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_RIGHT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return STAND_STILL;
 }
 ```
 ### Throwing Star
 ```js
-if ('CDEH'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+if (cellIsOneOf(cell, 'CDEH')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_LEFT;
 }
-else if ('ABFG'.indexOf(cell) >= 0) {
-  colorCell(NEXT_COLOR);
+else if (cellIsOneOf(cell, 'ABFG')) {
+  flipToLetter(NEXT_LETTER);
   return TURN_RIGHT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return STAND_STILL;
 }
 ```

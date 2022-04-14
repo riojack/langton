@@ -15,18 +15,22 @@ var FORWARD = { next: antDirection, dy: dy, dx: dx};
 var STAND_STILL = { next: antDirection, dy: 0, dx: 0};
 var TURN_AROUND = arguments[6][TURN_LEFT.next];
 var cell = grid[anty][antx];
-var NEXT_COLOR = String.fromCharCode(cell.charCodeAt(0) + 1);
+var NEXT_LETTER = String.fromCharCode(cell.charCodeAt(0) + 1);
 
-function colorCell(color) { grid[anty][antx] = color; }
+function cellIsOneOf(cell, letters) {
+  return letters.indexOf(cell) >= 0;
+}
+
+function flipToLetter(letter) { grid[anty][antx] = letter; }
 
 `;
 
 const STARTING_BODY = `if (cell === 'A') {
-  colorCell('B');
+  flipToLetter('B');
   return TURN_LEFT;
 }
 else {
-  colorCell('A');
+  flipToLetter('A');
   return TURN_RIGHT;
 }`;
 
