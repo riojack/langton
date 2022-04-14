@@ -2,10 +2,9 @@ const { PRELUDE, STARTING_BODY, SOUTH } = require('./constants');
 const { rasterizeOne, CANVAS_HEIGHT, CANVAS_WIDTH } = require('./rasterizer');
 const { beLikeAnAnt } = require('./logic');
 
+let batchSize = 165;
 let simTimer;
 function doSimulation(ctx, funct) {
-  const batchSize = 1000;
-
   let grid = (Array(CANVAS_HEIGHT).fill()).map(() => Array(CANVAS_WIDTH).fill('A')),
     dx = 0,
     dy = 0,
@@ -52,23 +51,37 @@ function doSimulation(ctx, funct) {
   ctx.imageSmoothingEnabled = false;
 
   const codeField = document.getElementById('langtons-brain');
-  codeField.rows = 35;
-  codeField.cols = 60;
   codeField.value = STARTING_BODY;
 
   const goButton = document.getElementById('turn-on-langtons-brain');
-  goButton.innerHTML = '&nbsp;';
   goButton.onclick = () => {
     const codeBody = document.getElementById('langtons-brain').value;
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    doSimulation(ctx, new Function(PRELUDE + codeBody));
+
+    try {
+      const funct = new Function(PRELUDE + codeBody);
+      doSimulation(ctx, funct);
+    } catch (e) {
+      alert('Oops!\n\n' +
+        'There was an error in the code.\n\n' +
+        'Did you type all the symbols, letters, and numbers correctly?');
+    }
   };
 
   goButton.ontouchstart = goButton.onclick;
 
   const stopBtn = document.getElementById('turn-off-langtons-brain');
-  stopBtn.innerHTML = '&nbsp;';
   stopBtn.onclick = () => {
     clearInterval(simTimer);
+  };
+
+  const currentSpeed = document.getElementById('current-speed');
+  currentSpeed.textContent = 'Speed: ' + batchSize;
+
+  const speedSlider = document.getElementById('speed-slider');
+  speedSlider.value = batchSize;
+  speedSlider.oninput = (e) => {
+    batchSize = +(e.target.value);
+    currentSpeed.textContent = 'Speed: ' + batchSize;
   };
 })();

@@ -2,14 +2,18 @@ doctype html
 html
   head
     meta(charset="utf-8")
-    title #{htmlWebpackPlugin.options.title}
+    title Langton's Ant
+    link(rel='stylesheet' href=require('bootstrap-reboot.min.css'))
+    link(rel='stylesheet' href=require('styles.css'))
   body
     canvas(id="langtons-world")
     div(class="controls-overlay")
-      textarea(id="langtons-brain", style="font-family: 'Consolas', monospace, 'Courier New', Courier")
-      button(id="turn-on-langtons-brain", type="button")
-      button(id="turn-off-langtons-brain", type="button")
-    each cssFile in htmlWebpackPlugin.files.css
-      style !{compilation.assets[cssFile.substr(htmlWebpackPlugin.files.publicPath.length)].source()}
-    each jsFile in htmlWebpackPlugin.files.js
-      script !{compilation.assets[jsFile.substr(htmlWebpackPlugin.files.publicPath.length)].source()}
+      textarea#langtons-brain(rows="18", cols="60")
+      div(class="on-off-buttons")
+        a.btn(id="turn-on-langtons-brain") start
+        a.btn(id="turn-off-langtons-brain") stop
+      div.speed-dial
+        div#current-speed
+        div.speed-slider-container
+          input#speed-slider(type="range", min="1", max="200", step="1", value="200")
+    script(src=require('simulation.js'))

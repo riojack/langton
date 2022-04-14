@@ -1,4 +1,4 @@
-const CANVAS_WIDTH = 1200;
+const CANVAS_WIDTH = 1000;
 const CANVAS_HEIGHT = 800;
 const PIXEL_SCALE = 2;
 

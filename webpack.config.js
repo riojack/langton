@@ -1,20 +1,29 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PugPlugin = require('pug-plugin');
+const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/simulation.js',
+  entry: {
+    index: './src/template.pug'
+  },
+  output: {
+    path: path.join(__dirname, 'dist/'),
+    publicPath: '',
+    filename: '[name].[contenthash:8].js'
+  },
   plugins: [
-    new HtmlWebpackPlugin({
-      inject: false,
-      title: 'Langton\'s Ant',
-      template: './src/template.pug',
-      minify: { collapseWhitespace: true, removeComments: true, minifyJS: true },
+    new PugPlugin({
+      modules: [
+        PugPlugin.extractCss({
+          filename: '[name].[contenthash:8].css'
+        }),
+      ],
     })
   ],
   module: {
     rules: [
-      { test: /\.(js)$/, use: { loader: 'babel-loader' } },
-      { test: /\.pug$/, use: { loader: 'pug-loader' } }
+      { test: /\.pug$/, exclude: /node_modules/, loader: PugPlugin.loader },
+      { test: /\.css$/, use: ['css-loader'] }
     ]
   }
 };
